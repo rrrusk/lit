@@ -16,6 +16,7 @@
         <td><%= response.topic_id %></td>
         <td><%= response.user_id %></td>
         <td><%= response.body %></td>
+				<td><%= image_tag(response.picture_url) if response.picture.present? %></td>
         <td><%= link_to 'Show', response %></td>
         <td><%= link_to 'Edit', edit_response_path(response) %></td>
         <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
