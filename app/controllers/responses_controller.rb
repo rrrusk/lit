@@ -28,7 +28,7 @@ class ResponsesController < ApplicationController
     @response = Response.new(response_params)
 
 		if @response.save
-			redirect_to '/topics'
+			redirect_to('/topics/' + @response.topic_id.to_s)
 		else
 			respond_to do |format|
 				format.html { render :new }
