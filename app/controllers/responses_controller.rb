@@ -15,6 +15,7 @@ class ResponsesController < ApplicationController
   # GET /responses/new
   def new
     @response = Response.new
+		@response.topic_id = params[:topic_id]
   end
 
   # GET /responses/1/edit
@@ -26,13 +27,12 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
 
-    respond_to do |format|
-      if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
-        format.json { render :show, status: :created, location: @response }
-      else
-        format.html { render :new }
-        format.json { render json: @response.errors, status: :unprocessable_entity }
+		if @response.save
+			redirect_to '/topics'
+		else
+			respond_to do |format|
+				format.html { render :new }
+				format.json { render json: @response.errors, status: :unprocessable_entity }
       end
     end
   end

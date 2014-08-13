@@ -1,19 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
+  <h1><%= @topic.title %></h1>
 
-<p>
-  <strong>User:</strong>
-  <%= @topic.user_id %>
-</p>
+	<div style="padding:3px;border:solid 1px #000;width:300px;">
+		<h2><%= @topic.user_id %></h2>
+		<%= @topic.body %>
+	</div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @topic.body %>
-</p>
+	<% @topic.responses.each do |response| %> 
+		<%= response.body %> <br>
+	<% end %>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to '返信', new_response_path(topic_id:@topic.id) %>
+
 <%= link_to 'Back', topics_path %>
