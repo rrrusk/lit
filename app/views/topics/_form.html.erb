@@ -12,12 +12,15 @@
   <% end %>
 
   <div id="wrap">
+		
+		<%= f.hidden_field :user_id %>
+		<h3>質問者:<%= current_user ? current_user.name : "名無しさん" %></h3>
   	<div class="field">
   	  <%= f.label :title %><br>
   	<%= f.text_field :title, :class => "form-control" %>
   	</div>
   	<div class="field">
-  	画像 <br>
+		<%= f.label :picture %> <br>
   	<%= f.file_field :picture %>
   	</div>
   	<div class="field">
@@ -25,7 +28,7 @@
 			<%= f.text_area :body, :class => "form-control" %>
   	</div>
   	<div class="actions">
-  	  <%= f.submit, :class => 'btn btn-primary' %>
+  	  <%= f.submit %>
   	</div>
   </div>
 <% end %>

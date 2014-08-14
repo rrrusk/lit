@@ -15,6 +15,7 @@ class TopicsController < ApplicationController
   # GET /topics/new
   def new
     @topic = Topic.new
+		@topic.user_id = current_user.id if current_user
   end
 
   # GET /topics/1/edit

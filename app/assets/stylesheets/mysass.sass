@@ -1,6 +1,29 @@
 .form-control
   :width 500px
 
+.field
+  :padding-bottom 5px
+
+.topic-contents
+  :border-left 3px #F00 solid
+  :padding-left 10px
+  :margin-bottom 50px
+
+.responses-contents
+  @extend .topic-contents
+  :border-left 3px #0F0 solid
+
+.users-contents
+  @extend .topic-contents
+  :border-left 3px #00F solid
+
+.user
+  :padding-bottom 5px
+  :border-bottom 1px solid #ccc
+ 
+input[type="email"],input[type="text"],input[type="password"]
+  @extend .form-control
+
 .titles
   :width 500px
 
@@ -19,3 +42,9 @@ input[type="submit"]
   :width 150px
   :display block
 
+.titles
+  :transion all 2s linear
+  
+.titles:hover
+  :background-color #ddd
+  :color #DA5019

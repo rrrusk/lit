@@ -12,7 +12,7 @@
 				<tbody>
 					<% @topics.each do |topic| %>
 						<tr>
-							<td><%= link_to topic.title, topic %></td>
+							<td class="titles"><%= link_to topic.title, topic %></td>
 							<td><span class="badge"><%= topic.responses.length %></span></td>
 						</tr>
 					<% end %>
@@ -23,9 +23,13 @@
 
 	<!-- サイドバー -->
 	<div class="col-md-3 col-md-offset-1 sidebar">
-		<%= link_to 'New Topic', new_topic_path, :class => 'btn btn-primary'%>
+		<%= current_user.name if current_user %><br>
+		<%= link_to 'New Topic', new_topic_path, :class => 'btn btn-primary'%><br>
+
+		<% if user_signed_in? %>
+			<%= link_to 'sign out', destroy_user_session_path, method: :delete %><br>
+		<% else %>
+			<%= link_to 'sign in', new_user_session_path %><br>
+		<% end %>
 	</div>
 </div>
-
-<br>
-

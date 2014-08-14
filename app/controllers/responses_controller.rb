@@ -16,6 +16,7 @@ class ResponsesController < ApplicationController
   def new
     @response = Response.new
 		@response.topic_id = params[:topic_id]
+		@response.user_id = current_user.id if current_user
   end
 
   # GET /responses/1/edit
