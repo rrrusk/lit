@@ -1,21 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-  <h1><%= @topic.title %></h1>
+<h1><%= @topic.title %></h1>
+<div id="wrap" class="row">
+	<div id="topic" class="col-md-8">
 
-	<div style="padding:3px;border:solid 1px #000;width:300px;">
+    <!-- 質問者の投稿 -->
 		<h2><%= @topic.user_id %></h2>
 		<%= @topic.body %><br>
 		<div class="pictures">
 			<%= image_tag(@topic.picture_url) if @topic.picture.present? %><br>
 		</div>
+
+		<!-- 回答者の投稿 -->
+		<% @topic.responses.each do |response| %> 
+			<div class="responses">
+				<%= response.body %> <br>
+				<%= image_tag(response.picture_url, :class => 'topics_img') if response.picture.present? %>
+			</div>
+		<% end %>
+	<%= link_to 'Back', topics_path, :class => 'btn btn-primary' %>
 	</div>
 
-	<% @topic.responses.each do |response| %> 
-		<%= response.body %> <br>
-		<%= image_tag(response.picture_url) if response.picture.present? %>
-		<!-- 画像がいっぱい出ちゃう問題未解決 -->
-	<% end %>
+	<!-- サイドバー -->
+	<div class="col-md-3 col-md-offset-1 sidebar">
+		<%= link_to '返信', new_response_path(topic_id:@topic.id), :class => 'btn btn-primary' %>
+	</div>
+</div>
 
-<%= link_to '返信', new_response_path(topic_id:@topic.id) %>
 
-<%= link_to 'Back', topics_path %>

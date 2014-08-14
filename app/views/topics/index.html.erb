@@ -1,8 +1,31 @@
 <h1>Listing topics</h1>
-    <% @topics.each do |topic| %>
-        <li><%= link_to topic.title, topic %></li>
-    <% end %>
+<div id="wrap" class="row">
+	<div id="topic" class="col-md-8">
+		<div class="conteiner">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>トピック一覧</th>
+						<th>レス数</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @topics.each do |topic| %>
+						<tr>
+							<td><%= link_to topic.title, topic %></td>
+							<td><span class="badge"><%= topic.responses.length %></span></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- サイドバー -->
+	<div class="col-md-3 col-md-offset-1 sidebar">
+		<%= link_to 'New Topic', new_topic_path, :class => 'btn btn-primary'%>
+	</div>
+</div>
 
 <br>
 
-<%= link_to 'New Topic', new_topic_path %>

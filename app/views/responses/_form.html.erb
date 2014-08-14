@@ -10,17 +10,19 @@
       </ul>
     </div>
   <% end %>
-
-	<%= f.hidden_field :topic_id %>
-  <div class="field">
-		画像 <br>
-		<%= f.file_field :picture, :class => "form-contorol" %>
-  </div>
-  <div class="field">
-		返信 <br>
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	
+	<div id="wrap">
+		<%= f.hidden_field :topic_id %>
+	  <div class="field">
+			画像 <br>
+			<%= f.file_field :picture %>
+	  </div>
+	  <div class="field">
+			返信 <br>
+			<%= f.text_area :body, :class => "form-control" %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit nil, :class => "btn btn-primary" %>
+	  </div>
+	</div>
 <% end %>
