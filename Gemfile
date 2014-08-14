@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'carrierwave'
 gem 'bootstrap-sass'
+gem 'compass-rails'
+gem 'compass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'

@@ -12,7 +12,12 @@
 				<tbody>
 					<% @topics.each do |topic| %>
 						<tr>
-							<td class="titles"><%= link_to topic.title, topic %></td>
+							<td class="titles">
+								<% if topic.body != "" %>
+									<%= link_to topic.title, topic, :class => 'tooltip', :title => topic.body %></td>
+								<% else %>
+									<%= link_to topic.title, topic %></td>
+								<% end %>
 							<td><span class="badge"><%= topic.responses.length %></span></td>
 						</tr>
 					<% end %>
